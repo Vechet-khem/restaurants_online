@@ -12,6 +12,10 @@ urlpatterns = [
     path('address/province/', province),
     path('address/province/<str:uniqid>', provinceDetail),
 
+    # supplyer
+    path('supplyer/', supplyer),
+    path('supplyer/<str:search>', supplyerDetail),
+
     # path('food/', food),
     # path('food/category/', category),
 ]
