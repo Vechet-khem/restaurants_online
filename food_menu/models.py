@@ -51,10 +51,10 @@ class tblprovince(models.Model):
         db_table = 'tblprovince'
 
 class tblsupplyer(models.Model):
-    first_name = models.CharField(max_length=200)
-    last_name = models.CharField(max_length=200)
+    first_name = models.CharField(max_length=200, null=True , blank=True)
+    last_name = models.CharField(max_length=200, null=True , blank=True)
     email = models.EmailField(max_length=200, null=True , blank=True)
-    mobile = models.CharField(max_length=200)
+    mobile = models.CharField(max_length=200, null=True , blank=True)
     company_name = models.CharField(max_length=225, null=True , blank=True)
     province = models.ForeignKey(tblprovince, on_delete=models.SET_NULL, null=True, blank=True,related_name='province',to_field='uniqid')
     district = models.ForeignKey(tbldistrict, on_delete=models.SET_NULL, null=True, blank=True,related_name='district',to_field='uniqid')

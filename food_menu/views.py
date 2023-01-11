@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from django.db.models import Q
 from .models import *
 from .serializer import *
+from rest_framework.parsers import JSONParser
 
 @api_view(['GET'])
 def village(request):
@@ -86,37 +87,37 @@ def provinceDetail(request,uniqid):
         return Response(serializer.data)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET','POST'])
+@api_view(['GET'])
 def supplyer(request):
     if request.method == 'GET':
         obj = tblsupplyer.objects.all()
         serializer = SupplyerSerializer(obj, many=True)
         return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET','PUT','POST'])
+def supplyerDetail(request,search):
+    try:
+        obj = tblsupplyer.objects.get(id = search)
+    except obj.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = SupplyerDetailSerializer(obj, many=True)
+        return Response(serializer.data)
     elif request.method == 'POST':
         serializer = SupplyerDetailSerializer(data=request.data)
         if serializer.is_valid():
-            # obj1  = request.data
-            # if request.data['province']:
-            #     vprovince = tblprovince.objects.get(uniqid=request.data['province'])
-            #     obj1['province'] = vprovince
-            # if request.data['district']:
-            #     vdistrict = tblprovince.objects.get(uniqid=request.data['district'])
-            #     obj1['district'] = vdistrict
-            # serializer2 = SupplyerSerializer(obj1)
             serializer.save()
             phone = request.data['mobile']
             obj1 = tblsupplyer.objects.filter(mobile=str(phone))
             serializer1 = SupplyerSerializer(obj1,many=True)
             return Response(serializer1.data, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'PUT':
+        serializer = SupplyerDetailSerializer(obj,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            serializer = SupplyerSerializer(obj)
+            return Response(serializer.data)
 
-@api_view(['GET'])
-def supplyerDetail(request,search):
-    if request.method == 'GET':
-        try:
-            obj = tblsupplyer.objects.filter(Q(first_name__startswith = search) | Q(last_name__startswith = search) | Q(company_name__startswith = search))
-            serializer = SupplyerSerializer(obj, many=True)
-        except:
-            pass
-        return Response(serializer.data)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

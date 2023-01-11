@@ -30,9 +30,9 @@ class SupplyerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = tblsupplyer
-        fields = ('first_name','last_name','email','mobile','company_name','province','district','commune','village','image')
+        fields = ('id','first_name','last_name','email','mobile','company_name','province','district','commune','village','image')
 
 class SupplyerDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = tblsupplyer
-        fields = '__all__'
+        fields = ('id','first_name','last_name','email','mobile','company_name','province','district','commune','village','image')
