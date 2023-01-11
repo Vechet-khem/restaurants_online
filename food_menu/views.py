@@ -87,23 +87,11 @@ def provinceDetail(request,uniqid):
         return Response(serializer.data)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET'])
+@api_view(['GET','POST'])
 def supplyer(request):
     if request.method == 'GET':
         obj = tblsupplyer.objects.all()
         serializer = SupplyerSerializer(obj, many=True)
-        return Response(serializer.data)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-@api_view(['GET','PUT','POST'])
-def supplyerDetail(request,search):
-    try:
-        obj = tblsupplyer.objects.get(id = search)
-    except obj.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-    if request.method == 'GET':
-        serializer = SupplyerDetailSerializer(obj, many=True)
         return Response(serializer.data)
     elif request.method == 'POST':
         serializer = SupplyerDetailSerializer(data=request.data)
@@ -113,6 +101,18 @@ def supplyerDetail(request,search):
             obj1 = tblsupplyer.objects.filter(mobile=str(phone))
             serializer1 = SupplyerSerializer(obj1,many=True)
             return Response(serializer1.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET','PUT'])
+def supplyerDetail(request,search):
+    try:
+        obj = tblsupplyer.objects.get(id = search)
+    except obj.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = SupplyerDetailSerializer(obj, many=True)
+        return Response(serializer.data)
     elif request.method == 'PUT':
         serializer = SupplyerDetailSerializer(obj,data=request.data)
         if serializer.is_valid():
