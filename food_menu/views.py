@@ -12,11 +12,6 @@ def village(request):
         obj = tblvillages.objects.all()
         serializer = VillageSerializer(obj, many=True)
         return Response(serializer.data)
-    # if request.method == 'POST':
-    #     serializer = FoodOnlySerializer(data=request.data)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(serializer.data)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
@@ -103,13 +98,12 @@ def supplyer(request):
             return Response(serializer1.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET','PUT'])
+@api_view(['GET','PUT','DELETE'])
 def supplyerDetail(request,search):
     try:
-        obj = tblsupplyer.objects.get(id = search)
+        obj = tblsupplyer.objects.filter(id = search)
     except obj.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
-
     if request.method == 'GET':
         serializer = SupplyerDetailSerializer(obj, many=True)
         return Response(serializer.data)
@@ -119,5 +113,8 @@ def supplyerDetail(request,search):
             serializer.save()
             serializer = SupplyerSerializer(obj)
             return Response(serializer.data)
+    elif request.method == 'DELETE':
+        obj.delete()
+        return Response(data={'message':'supplyer was deleted success'})
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
