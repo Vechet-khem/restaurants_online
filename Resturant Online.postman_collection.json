@@ -1,0 +1,476 @@
+{
+	"info": {
+		"_postman_id": "82fc49e4-3076-4fd5-9223-540af9ddbfc5",
+		"name": "Resturant Online",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Address",
+			"item": [
+				{
+					"name": "Province",
+					"item": [
+						{
+							"name": "Get all province",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "Get detail province",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/address/province/01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"address",
+										"province",
+										"01"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "District",
+					"item": [
+						{
+							"name": "Get all district",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "Get all district of province",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "Get detail district",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Communce",
+					"item": [
+						{
+							"name": "Get all commune",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "Get all commnuc of district",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "Get detail communce",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/address/communce/010201",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"address",
+										"communce",
+										"010201"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Village",
+					"item": [
+						{
+							"name": "Get all village",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/address/village",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"address",
+										"village"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all village of commune",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/address/village/010209",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"address",
+										"village",
+										"010209"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get detail village",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/address/village/01020907",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"address",
+										"village",
+										"01020907"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Supplyer",
+			"item": [
+				{
+					"name": "Get all supplyer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/supplyer/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"supplyer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get supplyer detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/supplyer/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"supplyer",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put supplyer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "update",
+									"type": "default"
+								},
+								{
+									"key": "last_name",
+									"value": "last",
+									"type": "default"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "mobile",
+									"value": "0967677909",
+									"type": "default"
+								},
+								{
+									"key": "company_name",
+									"value": "computer shop",
+									"type": "default"
+								},
+								{
+									"key": "province",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "district",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "commune",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "village",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/supplyer/18",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"supplyer",
+								"18"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post new supplyer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "last_name",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "last_name",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "mobile",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "company_name",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "province",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "district",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "commune",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "village",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "village",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/supplyer/?last_name&email&mobile&company_name&province&district&commune&village",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"supplyer",
+								""
+							],
+							"query": [
+								{
+									"key": "last_name",
+									"value": null
+								},
+								{
+									"key": "email",
+									"value": null
+								},
+								{
+									"key": "mobile",
+									"value": null
+								},
+								{
+									"key": "company_name",
+									"value": null
+								},
+								{
+									"key": "province",
+									"value": null
+								},
+								{
+									"key": "district",
+									"value": null
+								},
+								{
+									"key": "commune",
+									"value": null
+								},
+								{
+									"key": "village",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete supplyer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/supplyer/18",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"supplyer",
+								"18"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -4,7 +4,6 @@ from rest_framework.response import Response
 from django.db.models import Q
 from .models import *
 from .serializer import *
-from rest_framework.parsers import JSONParser
 
 @api_view(['GET'])
 def village(request):
@@ -92,27 +91,25 @@ def supplyer(request):
         serializer = SupplyerDetailSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            phone = request.data['mobile']
-            obj1 = tblsupplyer.objects.filter(mobile=str(phone))
-            serializer1 = SupplyerSerializer(obj1,many=True)
+            serializer1 = SupplyerSerializer(request.data)
             return Response(serializer1.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET','PUT','DELETE'])
 def supplyerDetail(request,search):
     try:
-        obj = tblsupplyer.objects.filter(id = search)
+        obj = tblsupplyer.objects.get(id = search)
     except obj.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     if request.method == 'GET':
-        serializer = SupplyerDetailSerializer(obj, many=True)
+        serializer = SupplyerSerializer(obj, many=True)
         return Response(serializer.data)
     elif request.method == 'PUT':
         serializer = SupplyerDetailSerializer(obj,data=request.data)
         if serializer.is_valid():
             serializer.save()
-            serializer = SupplyerSerializer(obj)
-            return Response(serializer.data)
+            serializer1 = SupplyerSerializer(request.data)
+            return Response(serializer1.data)
     elif request.method == 'DELETE':
         obj.delete()
         return Response(data={'message':'supplyer was deleted success'})
