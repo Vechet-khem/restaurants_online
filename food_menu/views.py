@@ -100,7 +100,7 @@ def supplyerDetail(request,search):
     try:
         obj = tblsupplyer.objects.get(id = search)
     except tblcustomer.DoesNotExist:
-        return Response(data={'message':'data not found'})
+        return Response(data={'message':'data not found'},status=status.HTTP_400_BAD_REQUEST)
     if request.method == 'GET':
         serializer = SupplyerSerializer(obj)
         return Response(serializer.data)
@@ -134,7 +134,7 @@ def customerDetail(request,id):
     try:
         obj = tblcustomer.objects.get(id = id)
     except tblcustomer.DoesNotExist:
-        return Response(data={'message':'data not found'})
+        return Response(data={'message':'data not found'},status=status.HTTP_400_BAD_REQUEST)
     if request.method == 'GET':
         serializer = CustomerSerializer(obj)
         return Response(serializer.data)
