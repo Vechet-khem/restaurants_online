@@ -16,6 +16,9 @@ urlpatterns = [
     path('supplyer/', supplyer),
     path('supplyer/<str:search>', supplyerDetail),
 
-    # path('food/', food),
-    # path('food/category/', category),
+    # customer
+    path('customer/', customer),
+    path('customer/<str:id>', customerDetail),
+
+
 ]

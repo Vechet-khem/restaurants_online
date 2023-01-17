@@ -102,7 +102,7 @@ def supplyerDetail(request,search):
     except obj.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     if request.method == 'GET':
-        serializer = SupplyerSerializer(obj, many=True)
+        serializer = SupplyerSerializer(obj)
         return Response(serializer.data)
     elif request.method == 'PUT':
         serializer = SupplyerDetailSerializer(obj,data=request.data)
@@ -114,4 +114,38 @@ def supplyerDetail(request,search):
         obj.delete()
         return Response(data={'message':'supplyer was deleted success'})
 
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET','POST'])
+def customer(request):
+    if request.method == 'GET':
+        obj = tblcustomer.objects.all()
+        serializer = CustomerSerializer(obj, many=True)
+        return Response(serializer.data)
+    elif request.method == 'POST':
+        serializer = CustomerDetailSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            serializer1 = CustomerSerializer(request.data)
+            return Response(serializer1.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET','PUT','DELETE'])
+def customerDetail(request,id):
+    try:
+        obj = tblcustomer.objects.get(id = id)
+    except obj.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method == 'GET':
+        serializer = CustomerSerializer(obj)
+        return Response(serializer.data)
+    elif request.method == 'PUT':
+        serializer = CustomerDetailSerializer(obj,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            serializer1 = CustomerSerializer(request.data)
+            return Response(serializer1.data)
+    elif request.method == 'DELETE':
+        obj.delete()
+        return Response(data={'message':'customer was deleted success'})
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
