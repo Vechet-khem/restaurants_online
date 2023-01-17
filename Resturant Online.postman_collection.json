@@ -471,6 +471,241 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Get all customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/customer/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"customer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all customer detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/customer/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "Default",
+									"type": "default"
+								},
+								{
+									"key": "last_name",
+									"value": "Customer",
+									"type": "default"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "mobile",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "province",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "district",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "commune",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "village",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "inputer",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/customer/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"customer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put customer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "Default",
+									"type": "default"
+								},
+								{
+									"key": "last_name",
+									"value": "Customer",
+									"type": "default"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "mobile",
+									"value": "0967677909",
+									"type": "default"
+								},
+								{
+									"key": "province",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "district",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "commune",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "village",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "inputer",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/customer/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/customer/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
