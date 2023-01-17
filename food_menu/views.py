@@ -99,8 +99,8 @@ def supplyer(request):
 def supplyerDetail(request,search):
     try:
         obj = tblsupplyer.objects.get(id = search)
-    except obj.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+    except tblcustomer.DoesNotExist:
+        return Response(data={'message':'data not found'})
     if request.method == 'GET':
         serializer = SupplyerSerializer(obj)
         return Response(serializer.data)
@@ -113,7 +113,6 @@ def supplyerDetail(request,search):
     elif request.method == 'DELETE':
         obj.delete()
         return Response(data={'message':'supplyer was deleted success'})
-
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET','POST'])
@@ -134,8 +133,8 @@ def customer(request):
 def customerDetail(request,id):
     try:
         obj = tblcustomer.objects.get(id = id)
-    except obj.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+    except tblcustomer.DoesNotExist:
+        return Response(data={'message':'data not found'})
     if request.method == 'GET':
         serializer = CustomerSerializer(obj)
         return Response(serializer.data)

@@ -94,3 +94,5 @@ class tblcustomer(models.Model):
 
     class Meta:
         db_table = 'tblcustomer'
+
+
