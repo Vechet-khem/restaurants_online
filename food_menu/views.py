@@ -91,7 +91,8 @@ def supplyer(request):
         serializer = SupplyerDetailSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            serializer1 = SupplyerSerializer(request.data)
+            newObj = tblsupplyer.objects.get(id = serializer.data['id'])
+            serializer1 = SupplyerSerializer(newObj)
             return Response(serializer1.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -99,7 +100,7 @@ def supplyer(request):
 def supplyerDetail(request,search):
     try:
         obj = tblsupplyer.objects.get(id = search)
-    except tblcustomer.DoesNotExist:
+    except tblsupplyer.DoesNotExist:
         return Response(data={'message':'data not found'},status=status.HTTP_400_BAD_REQUEST)
     if request.method == 'GET':
         serializer = SupplyerSerializer(obj)
@@ -108,11 +109,10 @@ def supplyerDetail(request,search):
         serializer = SupplyerDetailSerializer(obj,data=request.data)
         if serializer.is_valid():
             serializer.save()
-            serializer1 = SupplyerSerializer(request.data)
-            return Response(serializer1.data)
+            return Response(data={'message':'supplyer successfully updated'})
     elif request.method == 'DELETE':
         obj.delete()
-        return Response(data={'message':'supplyer was deleted success'})
+        return Response(data={'message':'supplyer successfully deleted'})
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET','POST'])
@@ -125,7 +125,9 @@ def customer(request):
         serializer = CustomerDetailSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            serializer1 = CustomerSerializer(request.data)
+
+            newObj = tblcustomer.objects.get(id = serializer.data['id'])
+            serializer1 = CustomerSerializer(newObj)
             return Response(serializer1.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -142,9 +144,9 @@ def customerDetail(request,id):
         serializer = CustomerDetailSerializer(obj,data=request.data)
         if serializer.is_valid():
             serializer.save()
-            serializer1 = CustomerSerializer(request.data)
-            return Response(serializer1.data)
+            return Response(data={'message':'customer successfully updated'})
     elif request.method == 'DELETE':
         obj.delete()
-        return Response(data={'message':'customer was deleted success'})
+        return Response(data={'message':'customer successfully deleted'})
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
