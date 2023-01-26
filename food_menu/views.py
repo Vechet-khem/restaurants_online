@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from django.db.models import Q
 from .models import *
 from .serializer import *
+from django.contrib.auth.models import User
 
 @api_view(['GET'])
 def village(request):

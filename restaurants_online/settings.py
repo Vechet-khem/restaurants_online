@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'food_menu',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -115,3 +116,4 @@ STATICFILES_DIRS=[
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 BASE_API_URL = 'http://127.0.0.1:8000'
+AUTH_USER_MODEL = 'users.User'

@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
 from django.conf import settings
 
 class tblvillages(models.Model):
@@ -61,7 +60,7 @@ class tblsupplyer(models.Model):
     commune = models.ForeignKey(tblcommunce, on_delete=models.SET_NULL, null=True,related_name='commune',to_field='uniqid')
     village = models.ForeignKey(tblvillages, on_delete=models.SET_NULL, null=True,related_name='village',to_field='uniqid')
     image = models.ImageField(default='user.png', upload_to='supplyer',null=False,blank=True)
-    inputer = models.ForeignKey(User, on_delete=models.SET_NULL,null=True,blank=True,related_name='inputer')
+    inputer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL,null=True,blank=True,related_name='inputer')
     input_date = models.DateTimeField(auto_now=True)
 
     def get_image_url(self):
@@ -83,7 +82,7 @@ class tblcustomer(models.Model):
     commune = models.ForeignKey(tblcommunce, on_delete=models.SET_NULL, null=True,related_name='commune_cus',to_field='uniqid')
     village = models.ForeignKey(tblvillages, on_delete=models.SET_NULL, null=True,related_name='village_cus',to_field='uniqid')
     image = models.ImageField(default='user.png', upload_to='customer',null=False,blank=True)
-    inputer = models.ForeignKey(User, on_delete=models.SET_NULL,null=True,blank=True,related_name='inputer_cus')
+    inputer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL,null=True,blank=True,related_name='inputer_cus')
     input_date = models.DateTimeField(auto_now=True)
 
     def get_image_url(self):

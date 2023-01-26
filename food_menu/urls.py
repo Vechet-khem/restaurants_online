@@ -20,5 +20,4 @@ urlpatterns = [
     path('customer/', customer),
     path('customer/<str:id>', customerDetail),
 
-
 ]
