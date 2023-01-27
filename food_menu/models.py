@@ -93,3 +93,32 @@ class tblcustomer(models.Model):
 
     class Meta:
         db_table = 'tblcustomer'
+        
+class tblcategory(models.Model):
+    name = models.CharField(max_length=100, null=False , blank=True)
+    description = models.TextField(null=False , blank=True)
+    inputer = models.CharField(max_length=100, null=False , blank=True)
+    input_date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = 'tblcategory'
+
+class tblproperty_unit(models.Model):
+    name = models.CharField(max_length=200, null=False , blank=True)
+    description = models.TextField(null=False , blank=True)
+    inputer = models.CharField(max_length=100, null=False , blank=True)
+    input_date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = 'tblproperty_unit'
+
+class tblproducts(models.Model):
+    name = models.CharField(max_length=200, null=False , blank=True)
+    category = models.ForeignKey(tblcategory,on_delete = models.SET_NULL,null=True,blank=True,related_name='pro_cate')
+    property_unit = models.ForeignKey(tblproperty_unit,on_delete = models.SET_NULL,null=True,blank=True,related_name='pro_unit')
+    description = models.TextField(null=False , blank=True)
+    inputer = models.CharField(max_length=100, null=False , blank=True)
+    input_date = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        db_table = 'tblproducts'
