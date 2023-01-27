@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser,PermissionsMixin
 from django.conf import settings
+from food_menu.models import *
 
 # Create your models here.
 class UserManager(BaseUserManager):
@@ -36,10 +37,10 @@ class User(AbstractBaseUser):
     image = models.ImageField(default='user.png', upload_to='user',null=False,blank=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
-    # province = models.ForeignKey(tblprovince, on_delete=models.SET_NULL, null=True,related_name='province_us',to_field='uniqid')
-    # district = models.ForeignKey(tbldistrict, on_delete=models.SET_NULL, null=True,related_name='district_us',to_field='uniqid')
-    # commune = models.ForeignKey(tblcommunce, on_delete=models.SET_NULL, null=True,related_name='commune_us',to_field='uniqid')
-    # village = models.ForeignKey(tblvillages, on_delete=models.SET_NULL, null=True,related_name='village_us',to_field='uniqid')
+    province = models.ForeignKey(tblprovince, on_delete=models.SET_NULL, null=True,related_name='province_us',to_field='uniqid')
+    district = models.ForeignKey(tbldistrict, on_delete=models.SET_NULL, null=True,related_name='district_us',to_field='uniqid')
+    commune = models.ForeignKey(tblcommunce, on_delete=models.SET_NULL, null=True,related_name='commune_us',to_field='uniqid')
+    village = models.ForeignKey(tblvillages, on_delete=models.SET_NULL, null=True,related_name='village_us',to_field='uniqid')
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email']
