@@ -93,7 +93,6 @@ class tblcustomer(models.Model):
 
     class Meta:
         db_table = 'tblcustomer'
-        
 class tblcategory(models.Model):
     name = models.CharField(max_length=100, null=False , blank=True)
     description = models.TextField(null=False , blank=True)
